@@ -14,6 +14,7 @@ COPY scripts/import_default_account.sh .
 
 COPY wormhole/ wormhole
 COPY token_bridge/ token_bridge
+COPY testing/ testing
 COPY Makefile Makefile
 
 RUN ./import_default_account.sh
@@ -22,5 +23,4 @@ FROM sui AS tests
 
 WORKDIR /tmp
 
-RUN --mount=type=cache,target=/root/.move,id=move_cache \
-    make test
+RUN --mount=type=cache,target=/root/.move,id=move_cache make test
